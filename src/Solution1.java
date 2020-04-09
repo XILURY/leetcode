@@ -2,7 +2,6 @@
  * 二叉树重建 前序、中序、后序遍历
  */
 import java.util.Arrays;
-import java.util.GregorianCalendar;
 
 class TreeNode {
     int val;
@@ -10,7 +9,15 @@ class TreeNode {
     TreeNode right;
     TreeNode(int x) { val = x; }
 }
-public class Solution {
+/*
+根据当前前序序列的第一个结点确定根结点，为 1
+找到 1 在中序遍历序列中的位置，为 in[3]
+切割左右子树，则 in[3] 前面的为左子树， in[3] 后面的为右子树
+则切割后的左子树前序序列为：{2,4,7}，切割后的左子树中序序列为：{4,7,2}；切割后的右子树前序序列为：{3,5,6,8}，切割后的右子树中序序列为：{5,3,8,6}
+对子树分别使用同样的方法分解
+*
+*/
+public class Solution1 {
     public static void main(String[] arg){
         int[] pre = new int[]{1,2,4,7,3,5,6,8};
         int[] in = new int[]{4,7,2,1,5,3,8,6};
